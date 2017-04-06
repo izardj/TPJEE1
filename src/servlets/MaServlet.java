@@ -27,8 +27,17 @@ public class MaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath()).append("\n Customer Address : " + request.getRemoteAddr());
+		String[] lesloisirs = request.getParameterValues("loisirs");
 		
+		response.getWriter().append("Served at: ").append(request.getContextPath())
+		.append("\n Customer Address : ").append(request.getRemoteAddr())
+		.append("\n Nom : ").append(request.getParameter("nom"))
+		.append("\n Prénom : ").append(request.getParameter("prenom"))
+		.append("\n Mot de passe : ").append(request.getParameter("mdp"));
+
+		for (String l : lesloisirs) {
+			response.getWriter().append("\n" +l);
+		}
 	}
 
 	/**
