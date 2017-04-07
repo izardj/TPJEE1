@@ -1,4 +1,3 @@
-<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="java.util.Collection"%>
 <%@page import="metier.Client"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

@@ -18,6 +18,7 @@ import service.IClientService;
 @WebServlet("/AjouterClient")
 public class AjouterClient extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private IClientService ics = new ClientService();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -42,7 +43,7 @@ public class AjouterClient extends HttpServlet {
 		String couleurYeux = request.getParameter("couleuryeux");
 		
 		// 2- traitements avec la couche service
-		IClientService ics = new ClientService();
+		
 		
 		Client c = new Client();
 		c.setAge(age);

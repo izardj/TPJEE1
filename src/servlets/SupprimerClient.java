@@ -17,6 +17,7 @@ import service.IClientService;
 @WebServlet("/SupprimerClient")
 public class SupprimerClient extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private IClientService ics = new ClientService();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -38,7 +39,6 @@ public class SupprimerClient extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 
 		// 2- traitements avec la couche service
-		IClientService ics = new ClientService();
 		ics.supprimerClient(id);
 
 		// 3- préparation envoi

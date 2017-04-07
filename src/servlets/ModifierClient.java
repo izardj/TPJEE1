@@ -19,6 +19,7 @@ import service.IClientService;
 @WebServlet("/ModifierClient")
 public class ModifierClient extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private IClientService ics = new ClientService();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -41,9 +42,7 @@ public class ModifierClient extends HttpServlet {
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		
-		// 2- traitements avec la couche service
-		IClientService ics = new ClientService();
-		
+		// 2- traitements avec la couche service		
 		Client c = new Client();
 		
 		ics.modifierClient(id, nom, prenom);

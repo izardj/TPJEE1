@@ -19,6 +19,7 @@ import service.IClientService;
 @WebServlet("/ListerClients")
 public class ListerClients extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private IClientService ics = new ClientService();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -39,8 +40,6 @@ public class ListerClients extends HttpServlet {
 		// 1- récupérer les paramètres
 		
 		// 2- traitements avec la couche service
-		IClientService ics = new ClientService();
-
 		Collection<Client> clients = ics.listerClients();
 		
 		// 3- préparation envoi
