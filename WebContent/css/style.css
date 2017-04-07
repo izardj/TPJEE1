@@ -43,11 +43,13 @@ th, td {
 	padding: 10px;
 	margin: 20px 0;
 }
+
 #section-2 {
 	background-color: #f89e69;
 	padding: 10px;
 	margin: 20px 0;
 }
+
 legend {
 	font-weight: bold;
 	text-transform: uppercase;
@@ -65,9 +67,15 @@ legend {
 	display: inline-block;
 	padding: 10px 0 15px 40px;
 }
+
 input[type="submit"] {
 	background-color: #fe6921;
 }
+
+.date {
+	color: red;
+}
+
 /* si taille de l'écran est inférieure à 681px */
 @media screen and (max-width:680px) {
 	body {

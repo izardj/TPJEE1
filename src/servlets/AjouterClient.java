@@ -1,23 +1,28 @@
 package servlets;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import metier.Client;
+import service.ClientService;
+import service.IClientService;
+
 /**
  * Servlet implementation class MaServlet
  */
-@WebServlet("/MaServlet")
-public class MaServlet extends HttpServlet {
+@WebServlet("/AjouterClient")
+public class AjouterClient extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public MaServlet() {
+	public AjouterClient() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -28,36 +33,33 @@ public class MaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		/*
-		 String[] lesloisirs = request.getParameterValues("loisirs");
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath()).append("\n Customer Address : ")
-				.append(request.getRemoteAddr()).append("\n Nom : ").append(request.getParameter("nom"))
-				.append("\n Prénom : ").append(request.getParameter("prenom")).append("\n Mot de passe : ")
-				.append(request.getParameter("mdp"));
 
-		for (String l : lesloisirs) {
-			response.getWriter().append("\n" + l);
-		}
-		*/
 		request.setCharacterEncoding("UTF-8");
 		// 1- récupérer les paramètres
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
-		String mdp = request.getParameter("mdp");
-		String[] loisirs = request.getParameterValues("loisirs");
+		int age = Integer.parseInt(request.getParameter("age"));
+		String couleurYeux = request.getParameter("couleuryeux");
 		
 		// 2- traitements avec la couche service
+		IClientService ics = new ClientService();
+		
+		Client c = new Client();
+		c.setAge(age);
+		c.setCouleurYeux(couleurYeux);
+		c.setNom(nom);
+		c.setPrenom(prenom);
+		
+		ics.ajouterClient(c);
 		
 		// 3- préparation envoi
-		request.setAttribute("lenom", nom);
-		request.setAttribute("leprenom", prenom);
-		request.setAttribute("lemdp", mdp);
-		request.setAttribute("lesloisirs", loisirs);
+		request.setAttribute("nom", c.getNom());
+		request.setAttribute("prenom", c.getPrenom());
+		request.setAttribute("couleuryeux", c.getCouleurYeux());
+		request.setAttribute("age", c.getAge());
 		
 		// 4- envoi
-		request.getRequestDispatcher("/resultat.jsp").forward(request, response);
+		request.getRequestDispatcher("/afficher_client.jsp").forward(request, response);
 
 	}
 
