@@ -46,7 +46,7 @@ public class ListerClients extends HttpServlet {
 		request.setAttribute("clients", clients);
 		
 		// 4- envoi
-		request.getRequestDispatcher("/lister_clients.jsp").forward(request, response);
+		request.getRequestDispatcher("/lister_clients_jstl.jsp").forward(request, response);
 
 	}
 
